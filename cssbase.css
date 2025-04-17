@@ -1,0 +1,42 @@
+/* Base Theme - Dark and Grungy */
+:root {
+  --background-primary: #050505;
+  --background-secondary: #0a0a0a;
+  --background-tertiary: #0c0c0c;
+  --channeltextarea-background: #070707;
+  --background-floating: #000000;
+  --text-normal: #b0b0b0;
+  --text-muted: #555555;
+  --text-link: #a30000;
+  --background-accent: #181818;
+  --interactive-normal: #888888;
+  --interactive-hover: #c4c4c4;
+  --interactive-active: #ffffff;
+  --background-modifier-hover: rgba(255, 0, 0, 0.09);
+  --background-modifier-active: rgba(255, 0, 0, 0.12);
+  --background-modifier-selected: rgba(255, 0, 0, 0.18);
+  --header-primary: #eeeeee;
+  --header-secondary: #a0a0a0;
+  --font-primary: 'Special Elite', 'Creepster', 'Courier New', monospace;
+}
+
+body {
+  background-color: #000000 !important;
+  cursor: none !important;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.5), transparent);
+  opacity: 0.2;
+  z-index: 997;
+  animation: tracking 8s linear infinite;
+  pointer-events: none;
+}
