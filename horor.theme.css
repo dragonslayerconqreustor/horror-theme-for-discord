@@ -1,0 +1,324 @@
+/**
+ * DISCORD HORROR THEME
+ * Version: 1.0.0
+ * Author: Claude & User
+ * Description: A horrifying Discord theme with flashlight cursor effects and CCTV overlays
+ * 
+ * Installation:
+ * - For BetterDiscord: Save as discord-horror-theme.theme.css in your themes folder
+ * - For browser extensions: Create a new style for discord.com and paste this CSS
+ * - Make sure to also include the JavaScript file (discord-horror-theme.js)
+ */
+
+/* Base Theme - Dark and Grungy */
+:root {
+  --background-primary: #050505;
+  --background-secondary: #0a0a0a;
+  --background-tertiary: #0c0c0c;
+  --channeltextarea-background: #070707;
+  --background-floating: #000000;
+  --text-normal: #b0b0b0;
+  --text-muted: #555555;
+  --text-link: #a30000;
+  --background-accent: #181818;
+  --interactive-normal: #888888;
+  --interactive-hover: #c4c4c4;
+  --interactive-active: #ffffff;
+  --background-modifier-hover: rgba(255, 0, 0, 0.09);
+  --background-modifier-active: rgba(255, 0, 0, 0.12);
+  --background-modifier-selected: rgba(255, 0, 0, 0.18);
+  --header-primary: #eeeeee;
+  --header-secondary: #a0a0a0;
+  --font-primary: 'Special Elite', 'Creepster', 'Courier New', monospace;
+}
+
+/* Body setup for the flashlight effect */
+body {
+  background-color: #000000 !important;
+  cursor: none !important;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* VHS Tracking effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.5), transparent);
+  opacity: 0.2;
+  z-index: 997;
+  animation: tracking 8s linear infinite;
+  pointer-events: none;
+}
+
+/* Flashlight cursor effect */
+.flashlight-overlay {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle 250px at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+    rgba(0,0,0,0) 0%, 
+    rgba(0,0,0,0.9) 65%, 
+    rgba(0,0,0,0.98) 100%
+  );
+  pointer-events: none;
+  z-index: 999;
+  mix-blend-mode: multiply;
+}
+
+/* Custom cursor */
+.flashlight-cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 30%, rgba(255,255,255,0) 70%);
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.3), 0 0 5px 2px rgba(255, 0, 0, 0.4);
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.5));
+}
+
+/* CCTV Effect Overlay */
+.cctv-overlay {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.03) 50%), /* Scanlines */
+    linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04)); /* RGB effect */
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+  z-index: 998;
+  opacity: 0.6;
+  animation: cctv-flicker 10s infinite;
+}
+
+/* Static noise overlay */
+.static-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 997;
+}
+
+/* CCTV Recording indicator */
+.rec-indicator {
+  position: fixed;
+  top: 15px;
+  right: 100px;
+  color: #ff0000;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  animation: blink 2s infinite;
+  z-index: 1000;
+}
+
+/* CCTV timestamp */
+.cctv-timestamp {
+  position: fixed;
+  top: 15px;
+  left: 100px;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  z-index: 1000;
+}
+
+/* Blood splatter accent for mentions */
+.mentioned-Tre-dv {
+  position: relative;
+  background-color: rgba(114, 0, 0, 0.05) !important;
+  border-left: 4px solid #720000 !important;
+}
+
+.mentioned-Tre-dv::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -2px;
+  width: 10px;
+  height: 10px;
+  background: #720000;
+  border-radius: 50%;
+  box-shadow: 
+    5px 5px 0 -3px #720000,
+    -3px 7px 0 -3px #720000,
+    7px -2px 0 -3px #720000;
+  opacity: 0.7;
+}
+
+/* Glitch effect for server names */
+.name-3Uvkvr {
+  position: relative;
+  display: inline-block;
+}
+
+.name-3Uvkvr:hover {
+  animation: glitch 0.3s infinite;
+  text-shadow: 
+    2px 0 #ff0000, 
+    -2px 0 #00ff00;
+}
+
+/* Message hover effect */
+.message-2CShn3:hover {
+  transform: scale(1.008);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  background-color: rgba(20, 0, 0, 0.3);
+}
+
+/* Add haunted effect to messages */
+.message-2CShn3 {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.message-2CShn3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  opacity: 0;
+  z-index: -1;
+  box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.1);
+  transition: opacity 0.5s ease;
+}
+
+.message-2CShn3:hover::before {
+  opacity: 1;
+}
+
+/* User avatar effects - make them look unsettling */
+.avatar-2e8lTP {
+  filter: contrast(1.2) saturate(0.8) hue-rotate(5deg);
+  transition: all 0.3s ease;
+}
+
+.avatar-2e8lTP:hover {
+  filter: contrast(1.4) saturate(0.6) hue-rotate(-5deg) brightness(0.9);
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+}
+
+/* Creepy server icons */
+.wrapper-28eC3z {
+  filter: grayscale(0.7) sepia(0.2);
+  transition: all 0.3s ease;
+}
+
+.wrapper-28eC3z:hover {
+  filter: grayscale(0) sepia(0) hue-rotate(-10deg) saturate(1.2);
+  animation: pulse 1s infinite alternate;
+}
+
+/* Status indicators - make them flicker */
+.status-2DiCMd {
+  animation: flicker 3s infinite;
+}
+
+/* Typing indicator */
+.typing-2J1mQU {
+  color: #ff0000 !important;
+  opacity: 0.7;
+}
+
+/* Button hover states */
+button:hover {
+  background-color: rgba(114, 0, 0, 0.6) !important;
+  transform: scale(1.03);
+  transition: all 0.2s ease;
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(2px, 0);
+    text-shadow: -2px 0 #ff0000;
+  }
+  25% {
+    transform: translate(-2px, 0);
+    text-shadow: 2px 0 #00ff00;
+  }
+  50% {
+    transform: translate(0, 2px);
+    text-shadow: 2px -2px #ff0000;
+  }
+  75% {
+    transform: translate(0, -2px);
+    text-shadow: -2px 2px #00ff00;
+  }
+  100% {
+    transform: translate(2px, 0);
+    text-shadow: -2px 0 #ff0000;
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  41% { opacity: 1; }
+  42% { opacity: 0.8; }
+  43% { opacity: 1; }
+  45% { opacity: 0.3; }
+  46% { opacity: 1; }
+  89% { opacity: 1; }
+  90% { opacity: 0.4; }
+  91% { opacity: 1; }
+  92% { opacity: 0.7; }
+  93% { opacity: 1; }
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+@keyframes cctv-flicker {
+  0%, 100% { opacity: 0.6; }
+  3% { opacity: 0.55; }
+  7% { opacity: 0.6; }
+  18% { opacity: 0.6; }
+  18.5% { opacity: 0.2; }
+  18.6% { opacity: 0.6; }
+  30% { opacity: 0.6; }
+  30.3% { opacity: 0.7; }
+  30.4% { opacity: 0.6; }
+  67% { opacity: 0.6; }
+  67.5% { opacity: 0.25; }
+  67.7% { opacity: 0.6; }
+  77% { opacity: 0.6; }
+  77.5% { opacity: 0.67; }
+  77.7% { opacity: 0.6; }
+}
+
+/* VHS tracking lines */
+@keyframes tracking {
+  0% { transform: translateY(-100px); }
+  100% { transform: translateY(100vh); }
+}
